@@ -57,7 +57,7 @@ http://localhost:8001/docs
 
 ## Эндпоинты
 
-### `GET /ping`
+### GET /ping
 Проверка, что основной сервер запустился.
 ```bash
 curl http://localhost:8000/ping
@@ -68,8 +68,8 @@ curl http://localhost:8000/ping
 {"status":"ok"}
 ```
 
-### `POST /query`
-Принимает кадастровый номер, широту и долготу. Основной сервис отправляет запрос во внешний сервис `/result`, ждёт ответ и сохраняет запрос + ответ в БД.
+### POST /query
+Принимает кадастровый номер, широту и долготу. Основной сервис отправляет запрос во внешний сервис /result, ждёт ответ и сохраняет запрос + ответ в БД.
 
 ```bash
 curl -X POST http://localhost:8000/query \
@@ -93,7 +93,7 @@ curl -X POST http://localhost:8000/query \
 }
 ```
 
-### `GET /history`
+### GET /history
 Получение всей истории запросов.
 
 ```bash
@@ -101,9 +101,9 @@ curl "http://localhost:8000/history"
 ```
 
 Поддерживаются параметры:
-- `cadastral_number` — фильтр по кадастровому номеру;
-- `limit` — лимит записей, от 1 до 500;
-- `offset` — смещение.
+- cadastral_number — фильтр по кадастровому номеру;
+- limit — лимит записей, от 1 до 500;
+- offset — смещение.
 
 Пример истории по кадастровому номеру:
 ```bash
@@ -111,17 +111,17 @@ curl "http://localhost:8000/history?cadastral_number=77:01:0004010:1234&limit=10
 ```
 
 Также поддерживаются параметры:
-- `cadastral_number`;
-- `limit`;
-- `offset`.
+- cadastral_number;
+- limit;
+- offset.
 
 Пример:
 ```bash
 curl "http://localhost:8000/admin/requests?cadastral_number=77:01:0004010:1234"
 ```
 
-### `POST /result`
-Эндпоинт эмулируемого внешнего сервера. Основной рабочий вариант находится в отдельном сервисе на порту `8001`.
+### POST /result
+Эндпоинт эмулируемого внешнего сервера. Основной рабочий вариант находится в отдельном сервисе на порту 8001.
 
 ```bash
 curl -X POST http://localhost:8001/result \
@@ -161,4 +161,3 @@ pytest
 
 # Тестовое задание выполнил
 [Андрей Гомзиков](https://github.com/AndreyGomzikov)
-
